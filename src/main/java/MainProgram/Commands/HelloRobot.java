@@ -3,5 +3,13 @@ package MainProgram.Commands;
 import Robots.Robot;
 
 public class HelloRobot {
-    Robot rbt = new Robot();
+    private Robot rbt;
+
+    public void init(){
+        rbt = new Robot();
+    }
+
+    public void mainScript(){
+        System.out.println(rbt.whoami());
+    }
 }

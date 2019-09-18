@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="13" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: com.github.ev3dev-lang-java:ev3dev-lang-java:2.4.16" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.ev3dev-lang-java:lejos-commons:0.7.2" level="project" />
   </component>
 </module>
