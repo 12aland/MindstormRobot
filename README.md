@@ -1,5 +1,4 @@
 # MindstormRobot
-V1.0  
+V1.0.1  
 Hardware: Ev3 Brick + Mindstorm Hardware  
-Programing Language:Java  
-Yes
+Programing Language:Java   
