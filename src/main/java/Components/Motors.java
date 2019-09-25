@@ -1,21 +1,8 @@
 package Components;
 import ev3dev.actuators.lego.motors.EV3LargeRegulatedMotor;
-import ev3dev.sensors.Battery;
-import ev3dev.sensors.ev3.EV3IRSensor;
-import ev3dev.utils.JarResource;
-import ev3dev.utils.Shell;
-import lejos.hardware.port.MotorPort;
-import lejos.hardware.port.SensorPort;
-import lejos.robotics.SampleProvider;
-import lejos.utility.Delay;
 
 
 import java.util.ArrayList;
-
-enum Directions
-{
-    FOWARD,BACKWARDS,LEFT,RIGHT,STOP
-}
 
 public class Motors {
 
@@ -23,7 +10,7 @@ public class Motors {
     public void bulkMove(ArrayList<EV3LargeRegulatedMotor> motorstomove, Directions whichway){
         for(EV3LargeRegulatedMotor x :motorstomove) {
             switch (whichway) {
-                case FOWARD:
+                case FORWARD:
                     x.forward();
                     break;
                 case BACKWARDS:

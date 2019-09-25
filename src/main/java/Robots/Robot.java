@@ -7,17 +7,16 @@ import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
 import lejos.hardware.port.SensorPort;
 
-enum inputThings{
-    LARGEBOI,SMALLBOI,ORANGEBOI,COLORBOI,GYROBOI,IRBOI,TOUCHBOI,USBOI
-}
+import Robots.inputThings;
 
 public class Robot {
 
     private static inputThings[] portlist;
     private static BaseRegulatedMotor[] listofmotors;
     private static BaseSensor[] listofsensors;
-    public Robot(){
+    private static Port[] listofports;
 
+    public Robot(){
     }
 
     public Robot(inputThings[] portlist){
@@ -25,26 +24,26 @@ public class Robot {
     }
 
     public static void editPorts(){
-        Port[] listofoports = new Port[]{MotorPort.A,MotorPort.B,MotorPort.C,MotorPort.D, SensorPort.S1,SensorPort.S2,SensorPort.S3,SensorPort.S4};
+        listofports = new Port[]{MotorPort.A,MotorPort.B,MotorPort.C,MotorPort.D, SensorPort.S1,SensorPort.S2,SensorPort.S3,SensorPort.S4};
         int i = 0;
         for(inputThings x:portlist){
             switch (x){
                 case LARGEBOI:
-                    listofmotors[i] = new EV3LargeRegulatedMotor(listofoports[i]);
+                    listofmotors[i] = new EV3LargeRegulatedMotor(listofports[i]);
                 case SMALLBOI:
-                    listofmotors[i] = new EV3MediumRegulatedMotor(listofoports[i]);
+                    listofmotors[i] = new EV3MediumRegulatedMotor(listofports[i]);
                 case ORANGEBOI:
-                    listofmotors[i] = new NXTRegulatedMotor(listofoports[i]);
+                    listofmotors[i] = new NXTRegulatedMotor(listofports[i]);
                 case COLORBOI:
-                    listofsensors[i] = new EV3ColorSensor(listofoports[i]);
+                    listofsensors[i] = new EV3ColorSensor(listofports[i]);
                 case GYROBOI:
-                    listofsensors[i] = new EV3GyroSensor(listofoports[i]);
+                    listofsensors[i] = new EV3GyroSensor(listofports[i]);
                 case IRBOI:
-                    listofsensors[i] = new EV3IRSensor(listofoports[i]);
+                    listofsensors[i] = new EV3IRSensor(listofports[i]);
                 case TOUCHBOI:
-                    listofsensors[i] = new EV3TouchSensor(listofoports[i]);
+                    listofsensors[i] = new EV3TouchSensor(listofports[i]);
                 case USBOI:
-                    listofsensors[i] = new EV3UltrasonicSensor(listofoports[i]);
+                    listofsensors[i] = new EV3UltrasonicSensor(listofports[i]);
                 default:
                     break;
             }
@@ -53,5 +52,11 @@ public class Robot {
     }
     public String whoami(){
         return "Default Robot";
+    }
+    public BaseRegulatedMotor[] returnMotors(){
+        return listofmotors;
+    }
+    public BaseRegulatedMotor returnMotors(int i){
+        return listofmotors[i];
     }
 }

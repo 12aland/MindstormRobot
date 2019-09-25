@@ -1,5 +1,9 @@
 plugins {
     id 'java'
+    id 'idea'
+    id "net.ossindex.audit" version "0.4.5-beta"
+    id "com.github.johnrengelman.shadow" version "4.0.3"
+    id 'com.github.ev3dev-lang-java.gradle-plugin' version '1.6.11'
 }
 
 group 'Yeet'
@@ -14,5 +18,26 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    implementation 'com.github.ev3dev-lang-java:ev3dev-lang-java:2.4.16'
+    implementation "org.slf4j:slf4j-simple:1.7.28"
+    implementation 'com.github.ev3dev-lang-java:ev3dev-lang-java:2.5.3'
+}
+
+apply from: './config.gradle'
+
+compileJava.options.encoding = 'UTF-8'
+
+//Compile
+compileJava {
+    sourceCompatibility = 11
+    targetCompatibility = 11
+}
+
+//Jar
+jar {
+    manifest {
+        attributes("Implementation-Title": project.name,
+                "Implementation-Version": version,
+                "Main-Class": brick.pref.mainClass,
+                "Class-Path": brick.getClassPath(true) )
+    }
 }

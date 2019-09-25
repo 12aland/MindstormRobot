@@ -1,0 +1,10 @@
+// Project configuration
+brick.pref {
+    // Main class //
+    mainClass = "example.MyFirstRobot"
+
+    // Brick connection parameters //
+    sshHost = "[REDACTED]"
+    sshUser = "robot"
+    sshPassword = "maker"
+}

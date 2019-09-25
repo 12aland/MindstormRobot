@@ -1,0 +1,5 @@
+package Robots;
+
+public enum inputThings{
+    LARGEBOI,SMALLBOI,ORANGEBOI,COLORBOI,GYROBOI,IRBOI,TOUCHBOI,USBOI
+}
