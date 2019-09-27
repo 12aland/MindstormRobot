@@ -7,14 +7,11 @@ import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
 import lejos.hardware.port.SensorPort;
 
-import Robots.inputThings;
-
 public class Robot {
 
-    private static inputThings[] portlist;
-    private static BaseRegulatedMotor[] listofmotors;
-    private static BaseSensor[] listofsensors;
-    private static Port[] listofports;
+    private inputThings[] portlist;
+    private BaseRegulatedMotor[] listofmotors = new BaseRegulatedMotor[4];
+    private BaseSensor[] listofsensors = new BaseSensor[4];
 
     public Robot(){
     }
@@ -23,31 +20,46 @@ public class Robot {
         this.portlist = portlist;
     }
 
-    public static void editPorts(){
-        listofports = new Port[]{MotorPort.A,MotorPort.B,MotorPort.C,MotorPort.D, SensorPort.S1,SensorPort.S2,SensorPort.S3,SensorPort.S4};
-        int i = 0;
-        for(inputThings x:portlist){
+    public void editPorts(){
+        Port[] listofports = new Port[]{MotorPort.A, MotorPort.B, MotorPort.C, MotorPort.D, SensorPort.S1, SensorPort.S2, SensorPort.S3, SensorPort.S4};
+        for(int i=0;i<portlist.length;i++){
+            inputThings x= portlist[i];
             switch (x){
                 case LARGEBOI:
                     listofmotors[i] = new EV3LargeRegulatedMotor(listofports[i]);
+                    break;
                 case SMALLBOI:
                     listofmotors[i] = new EV3MediumRegulatedMotor(listofports[i]);
+                    break;
                 case ORANGEBOI:
                     listofmotors[i] = new NXTRegulatedMotor(listofports[i]);
+                    break;
                 case COLORBOI:
-                    listofsensors[i] = new EV3ColorSensor(listofports[i]);
+                    listofsensors[i-4] = new EV3ColorSensor(listofports[i]);
+                    break;
                 case GYROBOI:
-                    listofsensors[i] = new EV3GyroSensor(listofports[i]);
+                    listofsensors[i-4] = new EV3GyroSensor(listofports[i]);
+                    break;
                 case IRBOI:
-                    listofsensors[i] = new EV3IRSensor(listofports[i]);
+                    listofsensors[i-4] = new EV3IRSensor(listofports[i]);
+                    break;
                 case TOUCHBOI:
-                    listofsensors[i] = new EV3TouchSensor(listofports[i]);
+                    listofsensors[i-4] = new EV3TouchSensor(listofports[i]);
+                    break;
                 case USBOI:
-                    listofsensors[i] = new EV3UltrasonicSensor(listofports[i]);
+                    listofsensors[i-4] = new EV3UltrasonicSensor(listofports[i]);
+                    break;
+                case BLANK:
+                    if(i <= 3){
+                        listofmotors[i] = null;
+                    }
+                    else if (i<=7){
+                        listofsensors[i-4] = null;
+                    }
+                    break;
                 default:
                     break;
             }
-            i++;
         }
     }
     public String whoami(){

@@ -1,7 +1,7 @@
 // Project configuration
 brick.pref {
     // Main class //
-    mainClass = "example.MyFirstRobot"
+    mainClass = "MainProgram.MainApp"
 
     // Brick connection parameters //
     sshHost = "[REDACTED]"
